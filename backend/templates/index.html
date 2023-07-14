@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversation</title>
+    <style>
+        .message-container {
+            margin-bottom: 10px;
+        }
+        .human {
+            background-color: rgb(233, 240, 243);
+        }
+        .ai {
+            background-color: rgb(231, 250, 231);
+        }
+    </style>
+</head>
+<body>
+    {% if human and ai %}
+        {% for index in range(human|length) %}
+            <div class="message-container">
+                <span style="font-weight: bold; font-size: 20px;">User: </span>
+                <div class="human">{{ human[index] }}</div>
+            </div>
+            <div class="message-container">
+                <br>
+                <span style="font-weight: bold; font-size: 20px;">Bard: </span>
+                <div class="ai">{{ ai[index]|safe }}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No conversation found.</p>
+    {% endif %}
+</body>
+</html>
